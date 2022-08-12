@@ -22,3 +22,10 @@ jobs:
       
     - name: Compile
       run: make
+
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: libgit2.xcframework
+        path: libgit2.xcframework
+        
