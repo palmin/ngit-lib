@@ -13,7 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
+    - name: Install tools
+      run: brew install automake
+
     - name: Install dependencies
       run: git submodule update --init --recursive
       
