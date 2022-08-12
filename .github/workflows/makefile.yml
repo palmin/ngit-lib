@@ -17,12 +17,6 @@ jobs:
     - name: Install tools
       run: brew install automake
       
-    - name: Test Upload
-      uses: actions/upload-artifact@v3
-      with:
-        name: Makefile
-        path: Makefile
-
     - name: Install dependencies
       run: git submodule update --init --recursive
       
