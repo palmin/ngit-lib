@@ -1,0 +1,31 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: macos-11
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install tools
+      run: brew install automake
+      
+    - name: Install dependencies
+      run: git submodule update --init --recursive
+      
+    - name: Compile
+      run: make
+
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: libgit2.xcframework
+        path: libgit2.xcframework
+        
