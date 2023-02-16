@@ -1,6 +1,6 @@
 [submodule "src/openssl"]
 	path = src/openssl
-	url = https://github.com/vitalyster/OpenSSL-for-iPhone.git
+	url = https://github.com/palmin/OpenSSL-for-iPhone
 [submodule "src/libgit2/src"]
 	path = src/libgit2/src
 	url = https://github.com/palmin/libgit2.git
