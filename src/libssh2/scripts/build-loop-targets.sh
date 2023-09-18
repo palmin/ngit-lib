@@ -60,7 +60,7 @@ do
   # Add build target, --prefix and prevent async (references to getcontext(),
   # setcontext() and makecontext() result in App Store rejections) and creation
   # of shared libraruuuies (default since 1.1.0)
-  export LOCAL_CONFIG_OPTIONS="--host ${HOST} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} --disable-debug --disable-dependency-tracking --disable-silent-rules --disable-examples-build --with-libz --with-libssl-prefix=${TARGETDIR} --disable-shared --enable-static --with-crypto=openssl"
+  export LOCAL_CONFIG_OPTIONS="--host ${HOST} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} --disable-dependency-tracking --disable-silent-rules --disable-examples-build --with-libz --with-libssl-prefix=${TARGETDIR} --disable-shared --enable-static --with-crypto=openssl"
   if [[ "${PLATFORM}" == "MacOSX" ]]; then
     if [[ "${PLATFORM_VARIANT}" == "Catalyst" ]]; then
       export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode -L${OPENSSLDIR}/lib"
