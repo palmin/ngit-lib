@@ -12,8 +12,8 @@ LIBSSHVER="1.10.0"
 CUR_DIR = $(CURDIR)
 TARGETDIR := target
 
-#LIBSSH2_ENV := CONFIG_OPTIONS=--enable-debug
-LIBSSH2_ENV := CONFIG_OPTIONS=--disable-debug
+LIBSSH2_ENV := CONFIG_OPTIONS=--enable-debug
+#LIBSSH2_ENV := CONFIG_OPTIONS=--disable-debug
 BUILD_LIBSSH := $(LIBSSH2_ENV) $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh)
 
 BUILD_OPENSSL := $(realpath $(CUR_DIR)/src/openssl/build-libssl.sh)
