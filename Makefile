@@ -12,8 +12,11 @@ LIBSSHVER="1.10.0"
 CUR_DIR = $(CURDIR)
 TARGETDIR := target
 
+LIBSSH2_ENV := CONFIG_OPTIONS=--enable-debug
+#LIBSSH2_ENV := CONFIG_OPTIONS=--disable-debug
+BUILD_LIBSSH := $(LIBSSH2_ENV) $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh)
+
 BUILD_OPENSSL := $(realpath $(CUR_DIR)/src/openssl/build-libssl.sh)
-BUILD_LIBSSH := $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh)
 BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh)
 
 STATIC_IOS := $(TARGETDIR)/iOS-arm64/libgit2static.a
