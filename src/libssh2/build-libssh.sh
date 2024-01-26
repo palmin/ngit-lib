@@ -31,7 +31,6 @@ echo_help()
   echo "     --noparallel                  Disable running make with parallel jobs (make -j)"
   echo "     --tvos-sdk=SDKVERSION         Override tvOS SDK version"
   echo "     --disable-bitcode             Disable embedding Bitcode"
-  echo "     --disable-bitcode             Disable embedding Bitcode"
   echo " -v, --verbose                     Enable verbose logging"
   echo "     --verbose-on-error            Dump last 500 lines from log file if an error occurs (for Travis builds)"
   echo

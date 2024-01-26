@@ -14,10 +14,10 @@ TARGETDIR := target
 
 #LIBSSH2_ENV := CONFIG_OPTIONS=--enable-debug
 LIBSSH2_ENV := CONFIG_OPTIONS=--disable-debug
-BUILD_LIBSSH := $(LIBSSH2_ENV) $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh)
+BUILD_LIBSSH := $(LIBSSH2_ENV) $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh) --disable-bitcode 
 
-BUILD_OPENSSL := $(realpath $(CUR_DIR)/src/openssl/build-libssl.sh)
-BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh)
+BUILD_OPENSSL := $(realpath $(CUR_DIR)/src/openssl/build-libssl.sh) --disable-bitcode 
+BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh) --disable-bitcode 
 
 STATIC_IOS := $(TARGETDIR)/iOS-arm64/libgit2static.a
 STATIC_MACOS := $(TARGETDIR)/mac-x86_64/libgit2static.a
