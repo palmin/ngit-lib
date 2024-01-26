@@ -68,7 +68,7 @@ do
       export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode -L${OPENSSLDIR}/lib"
       export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode"
     else
-      export CFLAGS="-arch $ARCH $OPTFLAG-pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -L${OPENSSLDIR}/lib"
+      export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -L${OPENSSLDIR}/lib"
       export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
     fi
   else
