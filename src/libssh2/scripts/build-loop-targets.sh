@@ -63,15 +63,15 @@ do
   export LOCAL_CONFIG_OPTIONS="--host ${HOST} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} --disable-dependency-tracking --disable-silent-rules --disable-examples-build --with-libz --with-libssl-prefix=${TARGETDIR} --disable-shared --enable-static --with-crypto=openssl"
   if [[ "${PLATFORM}" == "MacOSX" ]]; then
     if [[ "${PLATFORM_VARIANT}" == "Catalyst" ]]; then
-      export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode -L${OPENSSLDIR}/lib"
-      export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode"
+      export CFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode -L${OPENSSLDIR}/lib"
+      export CPPFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios14.0-macabi -miphoneos-version-min=14.0 -fembed-bitcode"
     else
-      export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -L${OPENSSLDIR}/lib"
-      export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
+      export CFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -L${OPENSSLDIR}/lib"
+      export CPPFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
     fi
   else
-    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode -L${OPENSSLDIR}/lib -fembed-bitcode"
-    export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode"
+    export CFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode -L${OPENSSLDIR}/lib -fembed-bitcode"
+    export CPPFLAGS="-arch $ARCH -O2 -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode"
   fi
   if [[ "${PLATFORM}" == "iPhoneSimulator" ]]; then
     export CFLAGS="$CFLAGS --target=$ARCH-apple-ios12.0-simulator"
