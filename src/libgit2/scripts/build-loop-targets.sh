@@ -3,6 +3,8 @@
 #  Automatic build script for libssl and libcrypto
 #  for iPhoneOS, iPhoneSimulator and macCatalyst
 
+OPTFLAG=-O2
+
 for TARGET in ${TARGETS}
 do
   # Determine relevant SDK version
@@ -62,15 +64,15 @@ do
   # of shared libraruuuies (default since 1.1.0)
   if [[ "${PLATFORM}" == "MacOSX" ]]; then
     if [[ "${PLATFORM_VARIANT}" == "Catalyst" ]]; then
-      export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios-macabi -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
-      export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios-macabi -fembed-bitcode"
+      export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios-macabi -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
+      export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=$ARCH-apple-ios-macabi -fembed-bitcode"
     else
-      export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
-      export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
+      export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
+      export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
     fi
   else
-    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
-    export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
+    export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode -DCMAKE_COCOA -DGIT_COCOA"
+    export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
   fi
   export LOCAL_CONFIG_OPTIONS=""
   if [[ "${ARCH}" != "x86_64" ]]
