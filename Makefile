@@ -80,12 +80,15 @@ libgit2_mac_arm64:
 
 build_macos_catalyst_arm64: ${STATIC_MACOS_CATALYST_ARM64}
 ${STATIC_MACOS_CATALYST_ARM64}: ${TARGETDIR} openssl_mac_catalyst_arm64 libssh2_mac_catalyst_arm64 libgit2_mac_catalyst_arm64
+
 openssl_mac_catalyst_arm64:
 	cd ./$(TARGETDIR) && \
 	$(BUILD_OPENSSL) --targets="mac-catalyst-arm64" --verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
+
 libssh2_mac_catalyst_arm64:
 	cd ./$(TARGETDIR) && \
 	$(BUILD_LIBSSH) --targets="mac-catalyst-arm64" --verbose-on-error --version=$(LIBSSHVER)
+	
 libgit2_mac_catalyst_arm64:
 	cd ./$(TARGETDIR) && \
 	$(BUILD_LIBGIT) --targets="mac-catalyst-arm64" --verbose
@@ -94,6 +97,7 @@ libgit2_mac_catalyst_arm64:
 
 build_macos_catalyst: ${STATIC_MACOS_CATALYST}
 ${STATIC_MACOS_CATALYST}: ${TARGETDIR} openssl_mac_catalyst libssh2_mac_catalyst libgit2_mac_catalyst
+
 openssl_mac_catalyst:
 	cd ./$(TARGETDIR) && \
 	$(BUILD_OPENSSL) --targets="mac-catalyst-x86_64" --verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
