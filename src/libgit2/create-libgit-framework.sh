@@ -102,7 +102,7 @@ do
   	LIBTOOL_FLAGS="-static"
   fi
 
-  echo "Creating $TARGET_FRAMEWORK.framework"
+  echo "Creating $TARGET_FRAMEWORK.framework for $ARCH"
   mkdir -p $TARGET_FRAMEWORK.framework/Headers
   libtool -no_warning_for_no_symbols $LIBTOOL_FLAGS -arch_only $ARCH -o $TARGET_FRAMEWORK.framework/$FWNAME lib/libcrypto.a lib/libssl.a lib/libssh2.a
   cp -r include/$FWNAME/* $TARGET_FRAMEWORK.framework/Headers/
