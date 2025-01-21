@@ -54,13 +54,13 @@ build_macos: ${TARGETDIR} ${STATIC_MACOS}
 ${STATIC_MACOS}: openssl_mac libssh2_mac libgit2_mac
 openssl_mac:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="mac-x86_64" --verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_OPENSSL) --targets="mac-x86_64" --macosx-sdk--verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
 libssh2_mac:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_LIBSSH) --targets="mac-x86_64" --verbose-on-error --version=$(LIBSSHVER)
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_LIBSSH) --targets="mac-x86_64" --verbose-on-error --version=$(LIBSSHVER)
 libgit2_mac:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_LIBGIT) --targets="mac-x86_64" --verbose
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_LIBGIT) --targets="mac-x86_64" --verbose
 	mkdir -p $(TARGETDIR)/mac-x86_64
 	libtool -static -o $(STATIC_MACOS) $(TARGETDIR)/lib/libgit2.a $(TARGETDIR)/lib/libcrypto.a $(TARGETDIR)/lib/libssl.a $(TARGETDIR)/lib/libssh2.a
 
@@ -68,13 +68,13 @@ build_macos_arm64: ${STATIC_MACOS_ARM64}
 ${STATIC_MACOS_ARM64}: ${TARGETDIR} openssl_mac_arm64 libssh2_mac_arm64 libgit2_mac_arm64
 openssl_mac_arm64:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="mac-arm64" --verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_OPENSSL) --targets="mac-arm64" --verbose-on-error --ec-nistp-64-gcc-128 --version=${OPENSSLVER}
 libssh2_mac_arm64:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_LIBSSH) --targets="mac-arm64" --verbose-on-error --version=$(LIBSSHVER)
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_LIBSSH) --targets="mac-arm64" --verbose-on-error --version=$(LIBSSHVER)
 libgit2_mac_arm64:
 	cd ./$(TARGETDIR) && \
-	$(BUILD_LIBGIT) --targets="mac-arm64" --verbose
+	MACOSX_DEPLOYMENT_TARGET=14.0 $(BUILD_LIBGIT) --targets="mac-arm64" --verbose
 	mkdir -p $(TARGETDIR)/mac-arm64
 	libtool -static -o $(STATIC_MACOS_ARM64) $(TARGETDIR)/lib/libgit2.a $(TARGETDIR)/lib/libcrypto.a $(TARGETDIR)/lib/libssl.a $(TARGETDIR)/lib/libssh2.a
 
