@@ -142,11 +142,16 @@ framework_static: build_ios build_macos build_macos_arm64 build_macos_catalyst b
 libgit2.xcframework:
 	lipo -create $(STATIC_MACOS) $(STATIC_MACOS_ARM64) -output ${TARGETDIR}/libgit2static_macos.a
 	lipo -create $(STATIC_MACOS_CATALYST) $(STATIC_MACOS_CATALYST_ARM64) -output ${TARGETDIR}/libgit2static_catalyst.a
+	# Find the actual SDK directories with headers
+	$(eval IOS_HEADERS := $(shell find $(TARGETDIR)/bin -type d -name "iPhoneOS*-arm64.sdk" -exec test -d {}/include \; -print | head -1)/include)
+	$(eval MACOS_HEADERS := $(shell find $(TARGETDIR)/bin -type d -name "MacOSX*-arm64.sdk" -exec test -d {}/include \; -print | head -1)/include)
+	$(eval CATALYST_HEADERS := $(shell find $(TARGETDIR)/bin -type d -name "MacOSX*-x86_64.sdk" -exec test -d {}/include \; -print | head -1)/include)
+	$(eval SIM_HEADERS := $(shell find $(TARGETDIR)/bin -type d -name "iPhoneSimulator*-arm64.sdk" -exec test -d {}/include \; -print | head -1)/include)
 	xcodebuild -create-xcframework \
-		-library $(STATIC_IOS) \
-		-library ${TARGETDIR}/libgit2static_macos.a \
-		-library ${TARGETDIR}/libgit2static_catalyst.a \
-		-library ${STATIC_SIM_ARM64} \
+		-library $(STATIC_IOS) -headers $(IOS_HEADERS) \
+		-library ${TARGETDIR}/libgit2static_macos.a -headers $(MACOS_HEADERS) \
+		-library ${TARGETDIR}/libgit2static_catalyst.a -headers $(CATALYST_HEADERS) \
+		-library ${STATIC_SIM_ARM64} -headers $(SIM_HEADERS) \
 		-output libgit2.xcframework
 
 codesign:
@@ -157,4 +162,5 @@ clean:
 	@echo " Cleaning...";
 	@$(RM) -r libgit2.xcframework
 	@$(RM) -r $(TARGETDIR)
+
 .PHONY: clean
