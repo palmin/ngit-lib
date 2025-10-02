@@ -158,6 +158,10 @@ codesign:
 	codesign_identity=$(security find-identity -v -p codesigning | grep A33F2F2 | grep -o -E '\w{40}' | head -n 1)
 	codesign -f --deep -s 769B34C9C0E7AA7E0B0D60FF33C9F6F565288DBC libgit2.xcframework
 
+bundle: framework_static
+	rm -rf /Users/ander/opgaver/WorkingCopy/Git/Git/libgit2.xcframework
+	cp -R libgit2.xcframework /Users/ander/opgaver/WorkingCopy/Git/Git/libgit2.xcframework
+
 clean:
 	@echo " Cleaning...";
 	@$(RM) -r libgit2.xcframework
