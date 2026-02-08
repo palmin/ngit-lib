@@ -6,7 +6,7 @@
 
 DEFAULTTARGETS="ios64-cross mac-catalyst-x86_64"
 DEFAULTFWTARGETS="iOS-arm64 macOS-x86_64 simulator-x86_64 simulator-arm64"
-OPENSSLVER="1.1.1q"
+OPENSSLVER="3.5.5"
 LIBSSHVER="1.10.0"
 
 CUR_DIR = $(CURDIR)
