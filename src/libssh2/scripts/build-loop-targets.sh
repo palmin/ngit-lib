@@ -72,11 +72,11 @@ do
       export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -fembed-bitcode"
     fi
   else
-    export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode -L${OPENSSLDIR}/lib -fembed-bitcode"
-    export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=12.0 -fembed-bitcode"
+    export CFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=${IOS_MIN_SDK_VERSION} -fembed-bitcode -L${OPENSSLDIR}/lib -fembed-bitcode"
+    export CPPFLAGS="-arch $ARCH $OPTFLAG -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=${IOS_MIN_SDK_VERSION} -fembed-bitcode"
   fi
   if [[ "${PLATFORM}" == "iPhoneSimulator" ]]; then
-    export CFLAGS="$CFLAGS --target=$ARCH-apple-ios12.0-simulator"
+    export CFLAGS="$CFLAGS --target=$ARCH-apple-ios${IOS_MIN_SDK_VERSION}-simulator"
   fi
   CLANG="/usr/bin/xcrun clang"
   export CC="$CLANG"

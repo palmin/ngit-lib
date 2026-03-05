@@ -26,3 +26,5 @@ xcuserdata/
 
 /openssl-1.1.1q.tar.gz
 /openssl-3.5.5.tar.gz
+/libgit2-sftp-debug.xcframework
+/libgit2-1.8.xcframework
