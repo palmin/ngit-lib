@@ -162,6 +162,10 @@ bundle: framework_static
 	rm -rf /Users/ander/opgaver/WorkingCopy/Git/Git/libgit2.xcframework
 	cp -R libgit2.xcframework /Users/ander/opgaver/WorkingCopy/Git/Git/libgit2.xcframework
 
+shellfish: framework_static
+	rm -rf /Users/ander/opgaver/ShellFish/libssh2/libgit2.xcframework
+	cp -R libgit2.xcframework /Users/ander/opgaver/ShellFish/libssh2/libgit2.xcframework
+
 clean:
 	@echo " Cleaning...";
 	@$(RM) -r libgit2.xcframework
