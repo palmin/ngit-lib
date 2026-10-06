@@ -139,7 +139,9 @@ libgit2_sim_arm64:
 	libtool -static -o $(STATIC_SIM_ARM64) $(TARGETDIR)/lib/libgit2.a $(TARGETDIR)/lib/libcrypto.a $(TARGETDIR)/lib/libssl.a $(TARGETDIR)/lib/libssh2.a
 
 framework_static: build_ios build_macos build_macos_arm64 build_macos_catalyst build_macos_catalyst_arm64 build_sim build_sim_arm64 libgit2.xcframework
+# phony, as an existing framework would otherwise count as up to date and never be rebuilt
 libgit2.xcframework:
+	rm -rf libgit2.xcframework
 	lipo -create $(STATIC_MACOS) $(STATIC_MACOS_ARM64) -output ${TARGETDIR}/libgit2static_macos.a
 	lipo -create $(STATIC_MACOS_CATALYST) $(STATIC_MACOS_CATALYST_ARM64) -output ${TARGETDIR}/libgit2static_catalyst.a
 	# Find the actual SDK directories with headers
@@ -173,4 +175,4 @@ clean:
 	@$(RM) -r libgit2.xcframework
 	@$(RM) -r $(TARGETDIR)
 
-.PHONY: clean
+.PHONY: clean libgit2.xcframework
